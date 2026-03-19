@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问卷一信息收集与关键词分析系统</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">银发群体防骗经验认知与策略研究 / 问卷一</p>
+        <h1>问卷一信息收集与关键词分析系统</h1>
+        <p class="hero-text">
+          面向开放式问卷的一体化采集页面，支持基础信息录入、开放题作答、本地数据沉淀、热词统计、主题归类和研究洞察输出。
+        </p>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-metric">
+          <span>问卷特征</span>
+          <strong>开放题为主</strong>
+        </div>
+        <div class="hero-metric">
+          <span>分析方式</span>
+          <strong>关键词 + 主题归类</strong>
+        </div>
+        <div class="hero-metric">
+          <span>数据存储</span>
+          <strong>浏览器本地保存</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="insight-grid">
+      <article class="insight-card">
+        <span class="insight-label">主动分析 01</span>
+        <h2>这份问卷更像“经验采集”</h2>
+        <p>问卷一的重点不是做简单分数测量，而是尽量收集老人面对风险时的真实判断线索、核实路径与决策经验。</p>
+      </article>
+      <article class="insight-card">
+        <span class="insight-label">主动分析 02</span>
+        <h2>开放题必须配套文本分析</h2>
+        <p>如果只有录入，没有后续的热词、主题、经验法则提炼，这份问卷的数据价值会被明显低估。</p>
+      </article>
+      <article class="insight-card">
+        <span class="insight-label">主动分析 03</span>
+        <h2>系统输出要指向研究结论</h2>
+        <p>本系统重点输出“风险信号”“核实动作”“谨慎原则”“经验来源”“支持需求”等研究可用维度。</p>
+      </article>
+      <article class="insight-card">
+        <span class="insight-label">主动分析 04</span>
+        <h2>适合前期探索和样本沉淀</h2>
+        <p>当前版本更适合老师、团队成员或调研员先开展问卷一收集与主题扫描，再决定后续量化问卷设计。</p>
+      </article>
+    </section>
+
+    <main class="workspace">
+      <section class="form-column">
+        <div class="card">
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">采集模块</p>
+              <h2>问卷填写区</h2>
+            </div>
+            <p class="section-note">基础信息为必填，开放题建议至少填写 3 题以上。</p>
+          </div>
+
+          <form id="survey-form" class="survey-form">
+            <div class="form-block">
+              <h3>第一部分：基本信息</h3>
+              <div class="field-group">
+                <label>您的性别</label>
+                <div class="chip-group">
+                  <label class="chip-option"><input type="radio" name="gender" value="男">男</label>
+                  <label class="chip-option"><input type="radio" name="gender" value="女">女</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>您的年龄段</label>
+                <div class="chip-group">
+                  <label class="chip-option"><input type="radio" name="ageGroup" value="60-69岁">60-69岁</label>
+                  <label class="chip-option"><input type="radio" name="ageGroup" value="70-79岁">70-79岁</label>
+                  <label class="chip-option"><input type="radio" name="ageGroup" value="80岁及以上">80岁及以上</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>您的居住情况</label>
+                <div class="chip-group">
+                  <label class="chip-option"><input type="radio" name="livingStatus" value="独居">独居</label>
+                  <label class="chip-option"><input type="radio" name="livingStatus" value="与配偶同住">与配偶同住</label>
+                  <label class="chip-option"><input type="radio" name="livingStatus" value="与子女/孙辈同住">与子女/孙辈同住</label>
+                  <label class="chip-option"><input type="radio" name="livingStatus" value="其他">其他</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>您的主要信息来源（可多选）</label>
+                <div class="chip-group multi-line">
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="电视/广播">电视/广播</label>
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="报纸/杂志">报纸/杂志</label>
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="亲友交流">亲友交流</label>
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="社区活动">社区活动</label>
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="手机/网络（微信等）">手机/网络（微信等）</label>
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="子女/晚辈告知">子女/晚辈告知</label>
+                  <label class="chip-option"><input type="checkbox" name="infoSources" value="其他">其他</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-block">
+              <h3>第二部分与第三部分：开放题作答</h3>
+              <div id="questionnaire-fields" class="dynamic-fields"></div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">提交问卷</button>
+              <button type="button" id="reset-form" class="secondary-btn">清空当前填写</button>
+            </div>
+            <p id="form-message" class="message-line"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="dashboard-column">
+        <div class="card">
+          <div class="section-header compact">
+            <div>
+              <p class="section-eyebrow">数据操作</p>
+              <h2>本地数据管理</h2>
+            </div>
+          </div>
+          <div class="action-grid">
+            <button type="button" id="load-samples" class="secondary-btn">重载 35 份模拟数据</button>
+            <button type="button" id="export-json" class="secondary-btn">导出 JSON</button>
+            <button type="button" id="export-csv" class="secondary-btn">导出 CSV</button>
+            <button type="button" id="clear-data" class="danger-btn">清空全部数据</button>
+          </div>
+          <p class="hint-text">当前版本采用浏览器本地存储。首次打开空数据页面时，会自动装载 35 份模拟问卷。</p>
+        </div>
+
+        <div class="metric-grid" id="metric-grid"></div>
+
+        <div class="card">
+          <div class="section-header compact">
+            <div>
+              <p class="section-eyebrow">结构统计</p>
+              <h2>样本画像</h2>
+            </div>
+          </div>
+          <div class="chart-stack">
+            <div class="chart-block">
+              <h3>性别分布</h3>
+              <div id="gender-bars" class="bar-list"></div>
+            </div>
+            <div class="chart-block">
+              <h3>年龄分布</h3>
+              <div id="age-bars" class="bar-list"></div>
+            </div>
+            <div class="chart-block">
+              <h3>居住情况</h3>
+              <div id="living-bars" class="bar-list"></div>
+            </div>
+            <div class="chart-block">
+              <h3>主要信息来源</h3>
+              <div id="source-bars" class="bar-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-header compact">
+            <div>
+              <p class="section-eyebrow">文本分析</p>
+              <h2>热词云墙与关键词排行</h2>
+            </div>
+            <p class="section-note">根据问卷主题预置防骗经验词典，适合做前期探索。</p>
+          </div>
+          <div id="tag-cloud" class="tag-cloud"></div>
+          <div id="keyword-table" class="keyword-table"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-header compact">
+            <div>
+              <p class="section-eyebrow">主题归类</p>
+              <h2>研究维度分析</h2>
+            </div>
+          </div>
+          <div id="theme-cards" class="theme-grid"></div>
+          <div class="insight-panel">
+            <h3>系统自动洞察</h3>
+            <ul id="analysis-insights" class="insight-list"></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-header compact">
+            <div>
+              <p class="section-eyebrow">问卷质量</p>
+              <h2>题目完成度与文本长度</h2>
+            </div>
+          </div>
+          <div id="question-stats" class="question-stats"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-header compact">
+            <div>
+              <p class="section-eyebrow">原始记录</p>
+              <h2>最近提交内容</h2>
+            </div>
+          </div>
+          <div id="response-list" class="response-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="sample-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
